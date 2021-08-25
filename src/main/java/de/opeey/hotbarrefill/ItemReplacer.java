@@ -59,7 +59,7 @@ public class ItemReplacer {
 
         /* Get first item of same type, which is not in the hotbar */
         Optional<? extends Map.Entry<Integer, ? extends ItemStack>> optionalEntry = sameItems.entrySet().stream().filter(entry -> entry.getKey() > 8).findFirst();
-        if (optionalEntry.isEmpty()) {
+        if (!optionalEntry.isPresent()) {
             return;
         }
 

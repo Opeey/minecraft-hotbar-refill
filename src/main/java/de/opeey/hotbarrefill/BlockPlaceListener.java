@@ -7,7 +7,13 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.logging.Logger;
 
-public record BlockPlaceListener(Logger logger) implements Listener {
+public class BlockPlaceListener implements Listener {
+    private final Logger logger;
+
+    public BlockPlaceListener(Logger logger) {
+        this.logger = logger;
+    }
+
     @EventHandler
     public void onBlockPlaced(BlockPlaceEvent event) {
         ItemStack itemInHand = event.getItemInHand();

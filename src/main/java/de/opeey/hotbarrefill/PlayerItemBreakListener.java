@@ -5,7 +5,13 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemBreakEvent;
 import java.util.logging.Logger;
 
-public record PlayerItemBreakListener(Logger logger) implements Listener {
+public class PlayerItemBreakListener implements Listener {
+    private final Logger logger;
+
+    public PlayerItemBreakListener(Logger logger) {
+        this.logger = logger;
+    }
+
     @EventHandler
     public void onPlayerItemBreak(PlayerItemBreakEvent event) {
         /* Call ItemReplacer */
