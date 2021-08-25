@@ -1,5 +1,6 @@
-package de.opeey.hotbarrefill;
+package de.opeey.hotbarrefill.listener;
 
+import de.opeey.hotbarrefill.ItemReplacer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemBreakEvent;
