@@ -1,14 +1,14 @@
 # Minecraft HotbarRefill Plugin
 A Minecraft plugin for automatically replacing a broken item or depleted item stack in the hotbar from the inventory if possible.
 
-This plugin works for craftbukkit/spigot/paper from Minecraft version 1.17.
+This plugin works for craftbukkit/spigotMC and paperMC from Minecraft version 1.13 to 1.17.
 
 See: https://paper.readthedocs.io/en/latest/about/faq.html
 
 ## Build
-This is a maven project. To build the plugins jar file you have to install maven (https://maven.apache.org/).
+The project is build on Java SDK 8 and can be packaged with maven (https://maven.apache.org/).
 
-With maven installed you can simply build the plugin, by executing:
+With maven and JDK 8 installed you can simply build the plugin, by executing:
 ```shell
 $ mvn package
 ```
