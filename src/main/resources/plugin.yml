@@ -1,5 +1,5 @@
 name: HotbarRefill
-version: 1.1.0
+version: 1.1.1
 api-version: 1.13
 description: This plugin tracks the hotbar and automatically replaces a broken item or depleted item stack from the inventory if possible.
 author: Opeey

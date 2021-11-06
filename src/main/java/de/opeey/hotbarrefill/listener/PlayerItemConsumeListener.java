@@ -7,45 +7,20 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.plugin.Plugin;
 
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class PlayerItemConsumeListener implements Listener {
-    private final Logger logger;
+    private final Plugin plugin;
 
-    public PlayerItemConsumeListener(Logger logger) {
-        this.logger = logger;
+    public PlayerItemConsumeListener(Plugin plugin) {
+        this.plugin = plugin;
     }
 
     @EventHandler
     public void onPlayerItemConsume(PlayerItemConsumeEvent event) {
-        Player player = event.getPlayer();
-        PlayerInventory playerInventory = player.getInventory();
-
-        ItemReplacer itemReplacer = new ItemReplacer(player, this.logger);
-
-        ItemStack consumedItem = event.getItem();
-
-        /* Check if only 1 consumable is remaining */
-        if (1 != consumedItem.getAmount()) {
-            return;
-        }
-
-        Map.Entry<Integer, ? extends ItemStack> replacementItemEntry = itemReplacer.findReplacementItem(consumedItem.getType());
-
-        if (null == replacementItemEntry) {
-            return;
-        }
-
-        Integer replacementItemSlot = replacementItemEntry.getKey();
-        ItemStack replacementItemStack = replacementItemEntry.getValue();
-
-        /* Increment amount, because it will be lowered by one after consuming */
-        replacementItemStack.setAmount(replacementItemStack.getAmount() + 1);
-
-        event.setItem(replacementItemStack);
-        playerInventory.setItem(replacementItemSlot, null);
+        ItemReplacer itemReplacer = new ItemReplacer(this.plugin, event.getPlayer());
+        itemReplacer.replace(event.getItem());
     }
 }

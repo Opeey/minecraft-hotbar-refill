@@ -5,14 +5,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
-
-import java.util.logging.Logger;
+import org.bukkit.plugin.Plugin;
 
 public class BlockPlaceListener implements Listener {
-    private final Logger logger;
+    private final Plugin plugin;
 
-    public BlockPlaceListener(Logger logger) {
-        this.logger = logger;
+    public BlockPlaceListener(Plugin plugin) {
+        this.plugin = plugin;
     }
 
     @EventHandler
@@ -25,7 +24,7 @@ public class BlockPlaceListener implements Listener {
         }
 
         /* Call ItemReplacer */
-        ItemReplacer itemReplacer = new ItemReplacer(event.getPlayer(), this.logger);
+        ItemReplacer itemReplacer = new ItemReplacer(this.plugin, event.getPlayer());
         itemReplacer.replace(event.getItemInHand());
     }
 }
